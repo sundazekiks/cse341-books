@@ -1,0 +1,33 @@
+{
+  "name": "cse-341-books",
+  "version": "1.0.0",
+  "description": "cse341-activity",
+  "keywords": [
+    "cse341",
+    "byupathway",
+    "w1"
+  ],
+  "homepage": "https://github.com/sundazekiks/cse341-books#readme",
+  "bugs": {
+    "url": "https://github.com/sundazekiks/cse341-books/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sundazekiks/cse341-books.git"
+  },
+  "license": "ISC",
+  "author": "Travis Abuton",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node --env-file=.env server.js",
+    "dev": "nodemon --env-file=.env server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
