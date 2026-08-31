@@ -8,14 +8,14 @@ const client = new MongoClient(URI,
     }
 )
 
-export let db;
+export let getDb;
 
 export async function connect() {
     try {
         await client.connect();
         await client.db(DBNAME).command({ ping: 1 });
         console.log("Database connected successfuly")
-        db = client.db(DBNAME);
+        getDb = client.db(DBNAME);
     } catch (err) {
         console.err("database failed to connect" + err)
     }
