@@ -9,7 +9,6 @@ app.use(express.json())
 app.use("/books", books)
 
 app.get("/", (req, res) => {
-
     return res.status(200).send("Server is healthy")
 })
 
