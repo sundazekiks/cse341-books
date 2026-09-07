@@ -22,13 +22,16 @@
   "scripts": {
     "test": "test",
     "start": "node --env-file=.env server.js",
-    "dev": "nodemon --env-file=.env server.js"
+    "dev": "nodemon --env-file=.env server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "express": "^5.2.1",
     "mongodb": "^7.6.0"
   },
   "devDependencies": {
+    "eslint": "^10.9.1",
     "nodemon": "^3.1.14"
   }
 }
