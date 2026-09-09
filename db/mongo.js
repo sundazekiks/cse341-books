@@ -17,6 +17,6 @@ export async function connect() {
         console.log("Database connected successfuly")
         getDb = client.db(DBNAME);
     } catch (err) {
-        console.err("database failed to connect" + err)
+        console.error("database failed to connect" + err)
     }
 }
