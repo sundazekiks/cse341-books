@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+    createAuthor,
     getAllAuthors,
     getAuthorById
 } from "../controller/author.controller.js";
@@ -46,5 +47,32 @@ router.get("/", getAllAuthors)
  *              description: Unable to retrieve authors 
  */
 router.get("/:id", getAuthorById)
-
+/**
+ * @openapi
+ * /authors:
+ *  post:
+ *     summary: Create an author
+ *     tags:
+ *          - Authors
+ *     requestBody:
+ *          content: 
+ *              application/json:
+ *                  schema: 
+ *                      type: object
+ *                      properties: 
+ *                          name:
+ *                              type: string
+ *                          birthYear: 
+ *                              type: integer
+ *                          id: 
+ *                              type: string
+ *     responses:
+ *          201:
+ *              description: Created an author
+ *          400:
+ *              description: Invalid author details or ID already exist
+ *          500:
+ *              description: internal server error
+ */
+router.post("/", createAuthor)
 export default router;
