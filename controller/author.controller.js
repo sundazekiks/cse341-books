@@ -38,13 +38,28 @@ export async function createAuthor(req, res) {
         return res.status(appError.code).json({ message: appError.message });
     }
 }
-
 export async function updateAuthor(req, res) {
     try {
         const { id } = req.params;
-        const newADetails = req.body;
+        const newADetails = req.body; // expecting { name, birthYear}
 
-        return res.status(200)
+        const AuthorUpdate = await AuthorService.UpdateAuthor({ id, updateDetails: newADetails });
+
+        if (AuthorUpdate.matchedCount === 0) throw new AppError("Author does not exist", 404);
+        if (AuthorUpdate.modifiedCount === 0) throw new AppError("An error occurred on updating the author's details", 400);
+        return res.status(200).json({ ...AuthorUpdate })
+    } catch (err) {
+        const appError = NormalizeError(err);
+        return res.status(appError.code).json({ message: appError.message });
+    }
+}
+
+export async function deleteAuthor(req, res) {
+    try {
+        const { id } = req.params;
+        const deleteA = await AuthorService.DeleteAuthor({ id })
+        if (deleteA.deletedCount === 0) throw new AppError("Author does not exist", 404)
+        return res.status(200).json({ author: deleteA, message: "Successfully deleted one document." })
     } catch (err) {
         const appError = NormalizeError(err);
         return res.status(appError.code).json({ message: appError.message });

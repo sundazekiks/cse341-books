@@ -142,6 +142,79 @@
             "description": "Unable to retrieve authors"
           }
         }
+      },
+      "put": {
+        "summary": "Update an author's details",
+        "tags": [
+          "Authors"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "the custom author id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "birthYear": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Author updated successfully"
+          },
+          "400": {
+            "description": "required fields missing"
+          },
+          "500": {
+            "description": "An internal error occured while updating author, try again later"
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete an author",
+        "tags": [
+          "Authors"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete an author using the custom ID such as, a1 a2",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted an author successfully"
+          },
+          "404": {
+            "description": "Author does not exist"
+          },
+          "500": {
+            "description": "An internal error occured please try again later"
+          }
+        }
       }
     }
   },

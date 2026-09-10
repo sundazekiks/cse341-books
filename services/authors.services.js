@@ -15,10 +15,13 @@ export const AuthorService = {
     },
     UpdateAuthor: async ({ id, updateDetails }) => {
         // We need to filter the author's update details so we can know which is which
-        const detailedUpdate = Object.entries(updateDetails).filter(([key, value]) => value !== ""); // eslint-disable-line
+        const detailedUpdate = Object.fromEntries(Object.entries(updateDetails).filter(([key, value]) => value !== "")); // eslint-disable-line
         return await getDb.collection("authors").updateOne(
             { id },
             { $set: detailedUpdate }
         )
+    },
+    DeleteAuthor: async ({ id }) => {
+        return await getDb.collection("authors").deleteOne({ id })
     }
 }
